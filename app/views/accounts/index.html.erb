@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Accounts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Initial date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.title %></td>
+        <td><%= account.login %></td>
+        <td><%= account.password %></td>
+        <td><%= account.initial_date.strftime('%d/%m/%Y') %></td>
+        <td><%= account_status(account.status) %></td>
+        <td><%= link_to 'Show', account %>
+        <%= link_to 'Edit', edit_account_path(account) %>
+        <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>
